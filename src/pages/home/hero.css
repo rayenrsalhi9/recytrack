@@ -1,0 +1,281 @@
+.hero-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light-color) 50%, var(--accent-lighter-color) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    text-align: center;
+    z-index: 10;
+    margin: 0 auto;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 16px;
+    margin: 16px auto;
+    width: fit-content;
+    background-color: var(--transparent-white-20);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.hero-title {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--light-color);
+    text-transform: capitalize;
+}
+
+.hero-title .highlight {
+    color: var(--contrast-accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 215, 0, 0.7);
+    text-decoration-thickness: 6px;
+    text-underline-offset: 4px;
+    position: relative;
+}
+
+.hero-title .highlight::before,
+.hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+                rgba(255, 215, 0, 0.4) 0%,
+                rgba(255, 215, 0, 0.2) 25%,
+                transparent 50%);
+    animation: sparkle 8s infinite linear;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes shine {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+
+@keyframes sparkle {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hero-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--transparent-white-90);
+    margin-bottom: 16;
+    max-width: 600px;
+    margin: 16px auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.cta-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.6s ease;
+}
+
+.cta-button.primary {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    box-shadow: 0 4px 14px var(--accent-shadow-color);
+}
+
+.cta-button.primary:hover {
+    background-color: var(--accent-dark-color);
+}
+
+.cta-button.secondary {
+    background-color: var(--light-color);
+    color: var(--accent-color);
+}
+
+.cta-button.secondary:hover {
+    background-color: var(--light-hover-color);
+    color: var(--dark-color);
+}
+
+/* Floating icons */
+.floating-icon {
+    position: absolute;
+    z-index: 5;
+    animation: float 6s ease-in-out infinite;
+}
+
+.left-top {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.right-top {
+    top: 15%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.left-bottom {
+    bottom: 25%;
+    left: 15%;
+    animation-delay: 1s;
+}
+
+.icon-circle {
+    width: 120px;
+    height: 120px;
+    background-color: var(--light-color);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    padding: 1rem;
+}
+
+.icon {
+    color: var(--accent-color);
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.icon-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: var(--transparent-white-80);
+    animation: bounce 2s infinite;
+}
+
+.scroll-text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* Animation for floating icons */
+@keyframes float {
+    0% {
+    transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+    transform: translateY(-15px) rotate(2deg);
+    }
+    100% {
+    transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-title {
+    font-size: 2.5rem;
+    }
+
+    .hero-description {
+    font-size: 1rem;
+    }
+
+    .floating-icon {
+    display: none;
+    }
+
+    .cta-buttons {
+    flex-direction: column;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+
+    .logo-container {
+    gap: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .floating-icon .icon-circle {
+    width: 100px;
+    height: 100px;
+    }
+
+    .icon {
+    width: 30px;
+    height: 30px;
+    }
+
+    .left-top {
+    left: 5%;
+    }
+
+    .right-top {
+    right: 5%;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
