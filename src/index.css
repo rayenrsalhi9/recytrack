@@ -5,10 +5,12 @@
   --contrast-accent: #ffc300;
   --accent-light-color: #6ea5ff;
   --accent-lighter-color: #b0d0ff;
+  --coral-red: #c80000;
   --dark-color: #111;
   --light-color: #fafafa;
 
   --transparent-white-20: rgba(255, 255, 255, 0.2);
+  --transparent-white-40: rgba(255, 255, 255, 0.4);
   --transparent-white-60: rgba(255, 255, 255, 0.6);
   --transparent-white-80: rgba(255, 255, 255, 0.8);
   --transparent-white-90: rgba(255, 255, 255, 0.9);

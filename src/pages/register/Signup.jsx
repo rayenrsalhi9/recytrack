@@ -1,13 +1,24 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Eye, EyeOff, Recycle } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import "./login.css"; // Assuming you want to use the same styles
+import { Link, Form, useActionData, useNavigation } from "react-router-dom";
+import { createAccount } from "../../firebase/auth/signup";
+
 import img1 from '../../assets/login/plastic_1.png'
 import img2 from '../../assets/login/plastic_2.png'
 import img3 from '../../assets/login/plastic_3.png'
 import img4 from '../../assets/login/plastic_4.png'
+import "./register.css";
+
+export const action = async ({ request }) => {
+  return await createAccount(request);
+}
 
 const SignupPage = () => {
+
+  const actionData = useActionData();
+  const navigation = useNavigation();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -22,28 +33,62 @@ const SignupPage = () => {
   return (
     <div className="login-container">
       <div className="login-content">
-        <div className="login-form-container">
+        <Form className="login-form-container" method="post" replace>
           <h1 className="login-title">Sign up</h1>
 
+          {/* Form Fields */}
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" className="form-input" placeholder="e.g. EcoHero123" />
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              className={`form-input ${actionData?.errors?.username ? 'error' : ''}`}
+              placeholder="e.g. EcoHero123" 
+            />
+            {actionData?.errors?.username && (
+              <span className="error-message">{actionData.errors.username}</span>
+            )}
           </div>
 
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" className="form-input" placeholder="e.g. user@example.com" />
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              className={`form-input ${actionData?.errors?.email ? 'error' : ''}`}
+              placeholder="e.g. user@example.com" 
+            />
+            {actionData?.errors?.email && (
+              <span className="error-message">{actionData.errors.email}</span>
+            )}
           </div>
 
           <div className="form-group">
             <label htmlFor="phone">Phone Number</label>
-            <input type="tel" id="phone" className="form-input" placeholder="e.g. +216 12 345 678" />
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              className={`form-input ${actionData?.errors?.phone ? 'error' : ''}`}
+              placeholder="e.g. +216 12 345 678" 
+            />
+            {actionData?.errors?.phone && (
+              <span className="error-message">{actionData.errors.phone}</span>
+            )}
           </div>
 
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <div className="password-input-container">
-              <input type={showPassword ? "text" : "password"} id="password" className="form-input" placeholder="******" />
+              <input 
+                type={showPassword ? "text" : "password"} 
+                id="password"
+                name="password"
+                className={`form-input ${actionData?.errors?.password ? 'error' : ''}`}
+                placeholder="******" 
+              />
               <button
                 type="button"
                 className="password-toggle"
@@ -53,12 +98,21 @@ const SignupPage = () => {
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
+            {actionData?.errors?.password && (
+              <span className="error-message">{actionData.errors.password}</span>
+            )}
           </div>
 
           <div className="form-group">
             <label htmlFor="confirm-password">Confirm Password</label>
             <div className="password-input-container">
-              <input type={showConfirmPassword ? "text" : "password"} id="confirm-password" className="form-input" placeholder="******" />
+              <input 
+                type={showConfirmPassword ? "text" : "password"} 
+                id="confirm-password"
+                name="confirm-password"
+                className={`form-input ${actionData?.errors?.confirmPassword ? 'error' : ''}`}
+                placeholder="******" 
+              />
               <button
                 type="button"
                 className="password-toggle"
@@ -68,10 +122,26 @@ const SignupPage = () => {
                 {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
+            {actionData?.errors?.confirmPassword && (
+              <span className="error-message">{actionData.errors.confirmPassword}</span>
+            )}
           </div>
 
-          <button type="submit" className="sign-in-button">
-            Sign up
+          {/* General Firebase/Auth error displayed separately */}
+          {actionData && actionData.success === false && !actionData.errors && (
+            <div className="general-error-message">
+              {actionData.message}
+            </div>
+          )}
+
+          <button 
+            type="submit" 
+            className="sign-in-button"
+            disabled={navigation.state === "submitting"}
+          >
+            {
+              navigation.state === "submitting"? "Signing up..." : "Sign up"
+            }
           </button>
 
           <p className="signup-prompt">
@@ -81,13 +151,13 @@ const SignupPage = () => {
           <div className="logo-container">
             <div className="logo">
               <Recycle size={24} />
-              <Link to='..'>
+              <Link to="..">
                 <span>RecyTrack</span>
               </Link>
             </div>
             <p className="copyright">© {new Date().getFullYear()} RecyTrack, Inc.</p>
           </div>
-        </div>
+        </Form>
       </div>
 
       <div className="image-carousel-container">

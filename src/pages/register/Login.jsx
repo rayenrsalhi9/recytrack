@@ -6,8 +6,7 @@ import img1 from '../../assets/login/plastic_1.png'
 import img2 from '../../assets/login/plastic_2.png'
 import img3 from '../../assets/login/plastic_3.png'
 import img4 from '../../assets/login/plastic_4.png'
-
-import "./login.css"
+import "./register.css"
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false)
