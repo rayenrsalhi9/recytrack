@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../config';
 import { redirect } from "react-router-dom";

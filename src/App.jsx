@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import HomeLayout from "./layout/HomeLayout";
 import Hero from "./pages/home/Hero";
 import Signup, { action as signupAction } from './pages/register/Signup'
-import Login from './pages/register/Login'
+import Login, { action as loginAction } from './pages/register/Login'
 import ProfileLayout from './layout/ProfileLayout'
 import Profile from "./pages/profile/Profile";
 
@@ -11,7 +11,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<HomeLayout />}>
         <Route index element={<Hero />} />
-        <Route path="login" element={<Login />} />
+        <Route path="login" element={<Login />} action={loginAction} />
         <Route path="signup" element={<Signup />} action={signupAction} />
       </Route>
       <Route path="/profile" element={<ProfileLayout />}>
