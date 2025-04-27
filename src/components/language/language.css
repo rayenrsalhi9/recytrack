@@ -1,0 +1,164 @@
+.language-selector-container {
+    position: fixed;
+    bottom: 8rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.language-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0062ff 0%, #6ea5ff 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 98, 255, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.language-toggle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.language-toggle-text {
+    font-size: 0.9rem;
+}
+
+/* Update the icon color to white and add box shadow */
+.language-toggle-content svg {
+    color: white;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.language-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 98, 255, 0.4);
+}
+
+.language-dropdown {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 200px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+    opacity: 0;
+    transform: translateY(10px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+.language-dropdown-header {
+    padding: 1rem;
+    background: linear-gradient(135deg, #0062ff 0%, #6ea5ff 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.language-options {
+    padding: 0.5rem;
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.language-option:hover {
+    background-color: #f5f7fb;
+}
+
+.language-option.selected {
+    background-color: rgba(0, 98, 255, 0.1);
+    font-weight: 500;
+}
+
+.language-flag {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.language-name {
+    flex: 1;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.language-check {
+    color: #0062ff;
+}
+
+/* RTL support for Arabic */
+[dir="rtl"] .language-flag {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .language-selector-container {
+    bottom: 7.5rem;
+    right: 1.5rem;
+    }
+
+    .language-toggle {
+    width: 45px;
+    height: 45px;
+    }
+
+    .language-dropdown {
+    width: 180px;
+    right: 0;
+    }
+}
+
+/* Add additional breakpoint for very small screens */
+@media (max-width: 360px) {
+    .language-selector-container {
+    bottom: 7rem;
+    right: 1rem;
+    }
+
+    .language-toggle {
+    width: 40px;
+    height: 40px;
+    }
+
+    .language-dropdown {
+    width: 160px;
+    }
+
+    .language-option {
+    padding: 0.6rem 0.8rem;
+    }
+}  

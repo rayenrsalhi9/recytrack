@@ -1,0 +1,13 @@
+{
+    "hero": {
+      "gatherPlastics": "Collecter des Plastiques",
+      "earnRewards": "Gagner des Récompenses",
+      "recycleNow": "Recycler Maintenant",
+      "badgeText": "Le recyclage est maintenant récompensé !",
+      "title": "Transformez vos déchets plastiques en <1>récompenses</1>",
+      "description": "Transformez vos déchets plastiques en une vraie valeur avec notre application. Gagnez des points chaque fois que vous recyclez, suivez votre impact et échangez des récompenses passionnantes. Rejoignez une communauté dédiée à rendre les villes plus propres et à construire un avenir plus vert.",
+      "login": "Connexion",
+      "createAccount": "Créer un Compte",
+      "scrollText": "Faites défiler pour en savoir plus"
+    }
+}

@@ -34,8 +34,9 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-content">
-          <h1 className="login-title">Sign in</h1>
-          <button className="google-button" onClick={handleGoogleLogin}>
+        <Form className="login-form-container" method="post" replace>
+        <h1 className="login-title">Sign in</h1>
+          <button className="google-button"  type="button" onClick={handleGoogleLogin}>
                 <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                   <g transform="matrix(1, 0, 0, 1, 0, 0)">
                     <path
@@ -49,7 +50,6 @@ const Login = () => {
           <div className="divider">
             <span>or</span>
           </div>
-        <Form className="login-form-container" method="post" replace>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input 

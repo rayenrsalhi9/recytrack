@@ -1,0 +1,13 @@
+{
+    "hero": {
+      "gatherPlastics": "Gather Plastics",
+      "earnRewards": "Earn Rewards",
+      "recycleNow": "Recycle Now",
+      "badgeText": "Recycling Just Got Rewarded!",
+      "title": "Turn your plastic waste into <1>rewards</1>",
+      "description": "Transform your plastic waste into real value with our app. Earn points every time you recycle, track your impact, and redeem exciting rewards. Join a community dedicated to making cities cleaner and building a greener future.",
+      "login": "Log In",
+      "createAccount": "Create Account",
+      "scrollText": "Scroll to learn more"
+    }
+}
