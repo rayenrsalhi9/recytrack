@@ -1,8 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Eye, EyeOff, Recycle } from "lucide-react";
 import { useState } from "react";
-import { Link, Form, useActionData, useNavigation } from "react-router-dom";
+import { Link, Form, useActionData, useNavigation, useNavigate } from "react-router-dom";
 import { login } from '../../firebase/auth/login'
+import { loginWithGoogle } from "../../firebase/auth/google";
 
 import img1 from '../../assets/login/plastic_1.png';
 import img2 from '../../assets/login/plastic_2.png';
@@ -18,6 +19,7 @@ const Login = () => {
 
   const actionData = useActionData();
   const navigation = useNavigation();
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -25,28 +27,29 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleGoogleLogin = async () => {
+    await loginWithGoogle(navigate);
+  };
+
   return (
     <div className="login-container">
       <div className="login-content">
-        <Form className="login-form-container" method="post" replace>
           <h1 className="login-title">Sign in</h1>
-
-          <button className="google-button">
-            <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-              <g transform="matrix(1, 0, 0, 1, 0, 0)">
-                <path
-                  d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1Z"
-                  fill="#4285F4"
-                ></path>
-              </g>
-            </svg>
-            <span>Continue with Google</span>
+          <button className="google-button" onClick={handleGoogleLogin}>
+                <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="matrix(1, 0, 0, 1, 0, 0)">
+                    <path
+                      d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1Z"
+                      fill="#4285F4"
+                    ></path>
+                  </g>
+                </svg>
+                <span>Continue with Google</span>
           </button>
-
           <div className="divider">
             <span>or</span>
           </div>
-
+        <Form className="login-form-container" method="post" replace>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input 
